@@ -13,6 +13,8 @@ export const Form = ({editFormVisibility, editTodo, cancelUpdate}) => {
   // state for if someone changes the (to edit) value in update form
   const [editValue, setEditValue]=useState('');
 
+  const [editResume, setEditResume] = useState('');
+
   // useEffect is to show the (to edit) value in update form
   useEffect(()=>{
     setEditValue(editTodo.todo);
@@ -30,6 +32,16 @@ export const Form = ({editFormVisibility, editTodo, cancelUpdate}) => {
       }
       setTodoValue('');
       dispatch(addTodo(todoObj))
+  }
+
+  const handleResumebox=(e)=>{
+    e.reventDefault();
+    let todoResume={
+       id: todoResume,
+       resume: editValue,
+       completed: false
+    }
+    dispatch(handleResumebox(todoResume))
   }
 
   // update form submit
@@ -64,8 +76,11 @@ export const Form = ({editFormVisibility, editTodo, cancelUpdate}) => {
           </div>
           <button type="button" className='btn btn-primary btn-md back-btn'
           onClick={cancelUpdate}>BACK</button>
+    
         </form>
       )}
+      
     </>
   )
+  
 }
