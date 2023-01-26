@@ -1,16 +1,23 @@
-import React from 'react'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import DoneTodos from '../components/DoneTodo';
 
-function ListTodos() {
-    const listItems = [
-        {id:1, todo:'abc', notcompleted:false}
-
+export const ListTodo = ({completed, notcompleted}) => {
+     const ListItems = [
+        {id: 1, todo: 'abc', completed: false},
+        {id: 2, todo: 'abc', completed: true},
+        {id: 3, todo: 'abc', completed: true},
     ]
-  return (
-    <div>
-       <h4>ListTodos</h4>
-    </div>
-  )
+    const list = useSelector ((initialList)=>{
+        return list.map((todo)=>{
+            if(ListItems===initialList){
+              (todo=completed);  
+            } else {
+                (todo=notcompleted);
 
-}
+        }})
+        
+        })}
 
-export default ListTodos
+
+export default ListTodo;        
