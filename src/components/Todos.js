@@ -7,7 +7,7 @@ import {edit2} from 'react-icons-kit/feather/edit2'
 import {arrowLeft} from 'react-icons-kit/fa/arrowLeft'
 import {backward} from 'react-icons-kit/fa/backward'
 import { removeTodo, handleCheckbox } from '../redux/todoapp/actions';
-import ListTodos from './ListTodos';
+import TodoList from './TodoList';
 
 export const Todos = ({handleEditClick, editFormVisibility}) => {
   // dispatch function to dispatch an action
@@ -15,16 +15,16 @@ export const Todos = ({handleEditClick, editFormVisibility}) => {
 
   // getting todos from the store
   const todos = useSelector((state)=>state.operationsReducer);
-  return todos.map((todo)=>{
-    if(todo?.completed){
-        <DoneTodo todo={todo}/>
-    }else{
-      <ListTodos todo={todo} />
-}})
+//   return todos.map((todo)=>{
+//     if(todo?.completed){
+//         <DoneTodo todo={todo}/>
+//     }else{
+//       <ListTodos todo={todo} />
+// }
+
+  return (
+    <TodoList todos={todos}/>
+  )
       
         
 }
-                        
-  
-  
-  

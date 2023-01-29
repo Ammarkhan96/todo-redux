@@ -4,7 +4,8 @@ export const REMOVE_TODO = 'REMOVE_TODO';
 export const UPDATE_TODO = 'UPDATE_TODO';
 export const UPDATE_CHECKBOX = 'UPDATE_CHECKBOX';
 export const RESUME_BOX = 'REUME_BOX';
-export const BACK_UP = 'BACK_UP';
+export const BACKUP_AGAIN = 'BACKUP_AGAIN';
+export const DELETE_TODO = 'DELETE_TODO';
 
 export const addTodo=(payload)=>{
     return{
@@ -16,6 +17,14 @@ export const addTodo=(payload)=>{
 export const deleteAll = () =>{
     return{
         type: DELETE_ALL
+    }
+}
+
+
+export const deleteItem = (payload) => {
+    return{
+        type: DELETE_TODO,
+        payload
     }
 }
 
@@ -40,16 +49,12 @@ export const handleCheckbox=(payload)=>{
     }
 }
 
- export const handleResumebox=(payload)=>{
-  return{
-    type: RESUME_BOX,
-    payload
-  }
- }
 
- export const handleSubmitBack=(payload)=>{
+
+ export const handleBackAgain = (payload) => {
     return{
-        type: BACK_UP,
+        type: BACKUP_AGAIN,
         payload
     }
  }
+

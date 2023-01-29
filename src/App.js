@@ -3,9 +3,10 @@ import { Form } from "./components/Form";
 import { Todos } from "./components/Todos";
 import {useDispatch, useSelector} from 'react-redux';
 import {deleteAll} from './redux/todoapp/actions';
+import { handleBackAgain } from './redux/todoapp/actions';
 import Marquee from 'react-fast-marquee';
 import DoneTodo from './components/DoneTodo';
-import ListTodos from './components/ListTodos';
+import ListTodos from './components/TodoList';
 
 function App() {
   // dispatch function to dispatch an action
@@ -26,10 +27,15 @@ function App() {
     setEditTodo(todo);
   }
 
+  
+
+
   // back button click
   const cancelUpdate=()=>{
     setEditFormVisibility(false);
   }
+
+//again list render
 
 
 
@@ -45,21 +51,17 @@ function App() {
       {todos.length > 1 && (
         <button className='btn btn-danger btn-md delete-all'
         onClick={()=>dispatch(deleteAll())}>DELETE ALL</button>
-  
       )}
-      <button className='btn btn-primary' >RESUME</button>
-      <button className='btn btn-danger' >BACK-AGAIN</button>
+      
+      <button className='btn btn-primary' 
+      onClick={()=>dispatch()}
+      >BACK-AGAIN</button>
        <br />   
     </div>
     
   );
 }
 
-<div>
-    <button>SELECT AGAIN</button>  
-    <DoneTodo  />
-    <ListTodos />
-</div>
-    
+
 
 export default App;

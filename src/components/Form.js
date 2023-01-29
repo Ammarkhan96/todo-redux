@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import { useDispatch } from 'react-redux';
-import { addTodo, handleEditSubmit } from '../redux/todoapp/actions';
+import { addTodo, handleEditSubmit, handleBackAgain } from '../redux/todoapp/actions';
 
 export const Form = ({editFormVisibility, editTodo, cancelUpdate}) => {
 
@@ -12,9 +12,7 @@ export const Form = ({editFormVisibility, editTodo, cancelUpdate}) => {
 
   // state for if someone changes the (to edit) value in update form
   const [editValue, setEditValue]=useState('');
-
-  const [editResume, setEditResume] = useState('');
-
+  
   // useEffect is to show the (to edit) value in update form
   useEffect(()=>{
     setEditValue(editTodo.todo);
@@ -27,21 +25,11 @@ export const Form = ({editFormVisibility, editTodo, cancelUpdate}) => {
       let time = date.getTime();
       let todoObj={
           id: time,
-          todo: todoValue,
+          title: todoValue,
           completed: false
       }
       setTodoValue('');
       dispatch(addTodo(todoObj))
-  }
-
-  const handleResumebox=(e)=>{
-    e.reventDefault();
-    let todoResume={
-       id: todoResume,
-       resume: editValue,
-       completed: false
-    }
-    dispatch(handleResumebox(todoResume))
   }
 
   // update form submit
@@ -54,6 +42,8 @@ export const Form = ({editFormVisibility, editTodo, cancelUpdate}) => {
     }
     dispatch(handleEditSubmit(editedObj))
   }
+
+
 
   return (
     <>
@@ -76,11 +66,10 @@ export const Form = ({editFormVisibility, editTodo, cancelUpdate}) => {
           </div>
           <button type="button" className='btn btn-primary btn-md back-btn'
           onClick={cancelUpdate}>BACK</button>
-    
+  
         </form>
       )}
+      </>
+      )}
+
       
-    </>
-  )
-  
-}
